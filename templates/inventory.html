@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Search Inventory</h3>
+<form>
+  <input name="q" placeholder="Search by brand/model" class="form-control mb-2">
+  <button class="btn btn-info">Search</button>
+</form>
+<table class="table table-bordered mt-3">
+    <tr>
+        <th>Brand</th><th>Model</th><th>Condition</th><th>Stock</th>
+    </tr>
+    {% for p in phones %}
+    <tr>
+        <td>{{ p.brand }}</td>
+        <td>{{ p.model }}</td>
+        <td>{{ p.condition }}</td>
+        <td>{{ p.stock }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

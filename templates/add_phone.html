@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Add Phone</h3>
+<form method="POST">
+  <input name="brand" placeholder="Brand" class="form-control mb-2" required>
+  <input name="model" placeholder="Model" class="form-control mb-2" required>
+  <select name="condition" class="form-control mb-2">
+    <option>New</option>
+    <option>Good</option>
+    <option>Scrap</option>
+  </select>
+  <input name="price" type="number" step="0.01" placeholder="Base Price" class="form-control mb-2" required>
+  <input name="stock" type="number" placeholder="Stock" class="form-control mb-2" required>
+  <button class="btn btn-success">Save</button>
+</form>
+{% endblock %}

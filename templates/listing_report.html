@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Listing Report</h3>
+<a href="{{ url_for('download_listing_pdf') }}" class="btn btn-primary mb-3">Download PDF</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Brand</th><th>Model</th><th>Condition</th>
+        <th>Base Price</th><th>Stock</th><th>Listed Platforms</th>
+    </tr>
+    {% for p in phones %}
+    <tr>
+        <td>{{ p.brand }}</td>
+        <td>{{ p.model }}</td>
+        <td>{{ p.condition }}</td>
+        <td>{{ p.base_price }}</td>
+        <td>{{ p.stock }}</td>
+        <td>{{ p.listed_on }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

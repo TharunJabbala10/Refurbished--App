@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Dashboard</h3>
+<a href="{{ url_for('add_phone') }}" class="btn btn-success mb-3">Add Phone</a>
+<a href="{{ url_for('bulk_upload') }}" class="btn btn-secondary mb-3">Bulk Upload</a>
+<a href="{{ url_for('inventory') }}" class="btn btn-info mb-3">Search Inventory</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Brand</th><th>Model</th><th>Condition</th>
+        <th>Base Price</th><th>Stock</th>
+        <th>Apit Price</th><th>Clue Price</th><th>Raptor Price</th>
+        <th>Listed Platforms</th>
+        <th>Action</th>
+    </tr>
+    {% for p in phones %}
+    <tr>
+        <td>{{ p.brand }}</td>
+        <td>{{ p.model }}</td>
+        <td>{{ p.condition }}</td>
+        <td>{{ p.base_price }}</td>
+        <td>{{ p.stock }}</td>
+        <td>{{ p.price_apit() }}</td>
+        <td>{{ p.price_clue() }}</td>
+        <td>{{ p.price_raptor() }}</td>
+        <td>{{ p.listed_on if p.listed_on else "Not Listed" }}</td>
+        <td>
+            <a href="{{ url_for('delete_phone', id=p.id) }}" class="btn btn-sm btn-danger">Delete</a>
+            <a href="{{ url_for('list_phone', platform='apit', id=p.id) }}" class="btn btn-sm btn-primary">List Apit</a>
+            <a href="{{ url_for('list_phone', platform='clue', id=p.id) }}" class="btn btn-sm btn-warning">List Clue</a>
+            <a href="{{ url_for('list_phone', platform='raptor', id=p.id) }}" class="btn btn-sm btn-success">List Raptor</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
